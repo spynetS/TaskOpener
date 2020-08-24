@@ -3,7 +3,6 @@ path= "C:/Users/Elev/Desktop/Projects/TaskOpeningScript/urls.txt"
 
 lines = open(path,"r")
 website = str(input())
-#branch s
 
 for line in lines:
 	splittedline = line.split(',')[0]
@@ -12,3 +11,5 @@ for line in lines:
 lines.close()
 
 input()
+#asdlasm
+#asldmas
