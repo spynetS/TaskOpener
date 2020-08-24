@@ -1,0 +1,3 @@
+sch,https://web.skola24.se/timetable/timetable-viewer/norrkoping.skola24.se/Ebersteinska%20gymnasiet/
+gm,https://mail.google.com/mail/u/1/#inbox
+one,https://mail.one.com/alfred@stensatter.se/INBOX/1/
