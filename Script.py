@@ -1,4 +1,6 @@
-import webbrowser, sys
+import webbrowser, sys ,os
+from os import system, name 
+
 path= "urls.txt"
 run = True
 
@@ -6,17 +8,24 @@ def Show():
         file = open(path,"r")
         for line in file:
                 print(line)
-        Loop()
+        file.close()
 
 def NewSite():
         print("Write new url and shortcut")
         print("ex,www.example.com")
         newsite=input()
         
-        if newsite == "CANCEL":
+        if newsite == "-cancel":
                 Loop()
-
-
+        if newsite == "-help":
+              Help()
+        if newsite == "-exit":
+                sys.exit("Exited program")
+        if newsite == "-show":
+                Show()
+        if newsite == "-clear":
+                Clear()
+      
         if "," in newsite:
                 print("you added "+newsite)
                 file = open(path,"a")
@@ -25,26 +34,56 @@ def NewSite():
         else:
                 print("Syntax error")
                 NewSite()
+def Delete():
+        print("Write shortcut to delete url")
+        fileToDelete = raw_input()
+        lines = open(path, "r")
+        newFile = open("new"+path,"a")
+        for line in lines:
+                if(fileToDelete!=line.split(',')[0]):
+                        newFile.write(line)
+        lines.close()
+        newFile.close()
+        os.remove("urls.txt")
+        os.rename("new"+path,path)
+def Clear(): 
+  
+    # for windows 
+    if name == 'nt': 
+        _ = system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = system('clear') 
+        Loop()
+def Help():
+        print("-show shows you your urls")           
+        print("-new takes you to the add window")           
+        print("-exit closes the program")
+        print("-cancel takes you back to the main window")           
+        print("-clear clears console")  
+
 def Loop():
         print("MAIN")
         print("Type HELP for help")
         lines = open(path,"r")
         website = input()
         
-        if website == "NEW":
+        if website == "-new":
         	NewSite()
 
-        if website == "HELP":
-                print("SHOW shows you your urls")           
-                print("NEW takes you to the add window")           
-                print("EXIT closes the program")
-                print("CANCEL takes you back to the main window")           
-           
+        if website == "-help":
+              Help()  
+        if website == "-delete":
+                Delete()          
+                lines.close()
 
-        if website == "EXIT":
+        if website == "-exit":
                 sys.exit("Exited program")
-        if website == "SHOW":
+        if website == "-show":
                 Show()
+        if website == "-clear":
+                Clear()
 
         for line in lines:
         	splittedline = line.split(',')[0]
