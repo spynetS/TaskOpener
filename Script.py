@@ -1,19 +1,32 @@
 import webbrowser, sys ,os
 from os import system, name 
 
+try:
+    f = open("urls.txt","w")
+    f.write("go,www.google.com")
+
+    # Do something with the file
+except IOError:
+        print("error")
+finally:
+    f.close()
+
+
 path= "urls.txt"
 run = True
 
 def Show():
-        file = open(path,"r")
-        for line in file:
-                print(line)
-        file.close()
-
+        try:
+                file = open(path,"r")
+                for line in file:
+                        print(line)
+                file.close()
+        except:
+                print("no urls")
 def NewSite():
         print("Write new url and shortcut")
         print("ex,www.example.com")
-        newsite=input()
+        newsite=raw_input()
         
         if newsite == "-cancel":
                 Loop()
@@ -42,7 +55,7 @@ def DeleteContentInFile():
 
 def Delete():
         print("Write shortcut to delete url")
-        fileToDelete = input()
+        fileToDelete = raw_input()
         sourceFileReader = open(path, "r")        
         sourceFile = open(path, "a")        
         my_list = []
@@ -100,7 +113,7 @@ def Loop():
         print("MAIN")
         print("Type -help for help")
         lines = open(path,"r")
-        website = input()
+        website = raw_input()
         
         if website == "-new":
                 NewSite()
