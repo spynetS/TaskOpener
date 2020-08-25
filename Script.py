@@ -36,7 +36,7 @@ def NewSite():
                 NewSite()
 def Delete():
         print("Write shortcut to delete url")
-        fileToDelete = raw_input()
+        fileToDelete = input()
         lines = open(path, "r")
         newFile = open("new"+path,"a")
         for line in lines:
