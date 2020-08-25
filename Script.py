@@ -42,10 +42,10 @@ def Delete():
         for line in lines:
                 if(fileToDelete!=line.split(',')[0]):
                         newFile.write(line)
-        line.close()
+        lines.close()
         newFile.close()
+        os.remove("urls.txt")
         os.rename("new"+path,path)
-        os.remove(path)
 def Clear(): 
   
     # for windows 
@@ -76,7 +76,7 @@ def Loop():
               Help()  
         if website == "-delete":
                 Delete()          
-   
+                lines.close()
 
         if website == "-exit":
                 sys.exit("Exited program")
