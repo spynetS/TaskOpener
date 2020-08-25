@@ -34,18 +34,48 @@ def NewSite():
         else:
                 print("Syntax error")
                 NewSite()
+def DeleteContentInFile():
+        sourceFileWrite = open(path,"w")
+        sourceFileWrite.write("")
+        sourceFileWrite.close()
+        print("deleteContent")
+
 def Delete():
         print("Write shortcut to delete url")
         fileToDelete = input()
-        lines = open(path, "r")
-        newFile = open("new"+path,"a")
-        for line in lines:
+        sourceFileReader = open(path, "r")        
+        sourceFile = open(path, "a")        
+        my_list = []
+
+        if fileToDelete == "-cancel":
+                Loop()
+        if fileToDelete == "-help":
+              Help()
+        if fileToDelete == "-exit":
+                sys.exit("Exited program")
+        if fileToDelete == "-show":
+                Show()
+        
+        for line in sourceFileReader:
                 if(fileToDelete!=line.split(',')[0]):
-                        newFile.write(line)
-        lines.close()
+                        my_list.append(line)
+
+        sourceFileWrite = open(path,"w")
+        sourceFileWrite.write("")
+        sourceFileWrite.close()  
+
+        for line in my_list:
+                sourceFile.write(line)
+
         newFile.close()
-        os.remove("urls.txt")
-        os.rename("new"+path,path)
+        newFileReader.close()
+        sourceFile.close()
+        sourceFileReader.close()
+        sourceFileWrite.close()
+        print("end")
+        #os.remove("new"+path)
+
+        
 def Clear(): 
   
     # for windows 
@@ -62,21 +92,23 @@ def Help():
         print("-exit closes the program")
         print("-cancel takes you back to the main window")           
         print("-clear clears console")  
+        print("-delete take you to deleting window")  
+        print("github link: https://github.com/spynetS/TaskOpener")  
+        print("Program by Alfred Roos")  
 
 def Loop():
         print("MAIN")
-        print("Type HELP for help")
+        print("Type -help for help")
         lines = open(path,"r")
         website = input()
         
         if website == "-new":
-        	NewSite()
+                NewSite()
 
         if website == "-help":
               Help()  
         if website == "-delete":
                 Delete()          
-                lines.close()
 
         if website == "-exit":
                 sys.exit("Exited program")
@@ -86,11 +118,10 @@ def Loop():
                 Clear()
 
         for line in lines:
-        	splittedline = line.split(',')[0]
-        	if splittedline==website: 
-        		webbrowser.open(line.split(',')[1])
-
-        	
+                splittedline = line.split(',')[0]
+                if splittedline==website: 
+                        webbrowser.open(line.split(',')[1])
+                
         lines.close()
         Loop()
 
