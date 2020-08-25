@@ -1,4 +1,4 @@
-import webbrowser, sys
+import webbrowser, sys ,os
 from os import system, name 
 
 path= "urls.txt"
@@ -8,6 +8,7 @@ def Show():
         file = open(path,"r")
         for line in file:
                 print(line)
+        file.close()
 
 def NewSite():
         print("Write new url and shortcut")
@@ -33,6 +34,18 @@ def NewSite():
         else:
                 print("Syntax error")
                 NewSite()
+def Delete():
+        print("Write shortcut to delete url")
+        fileToDelete = raw_input()
+        lines = open(path, "r")
+        newFile = open("new"+path,"a")
+        for line in lines:
+                if(fileToDelete!=line.split(',')[0]):
+                        newFile.write(line)
+        line.close()
+        newFile.close()
+        os.rename("new"+path,path)
+        os.remove(path)
 def Clear(): 
   
     # for windows 
@@ -60,8 +73,10 @@ def Loop():
         	NewSite()
 
         if website == "-help":
-              Help()          
-           
+              Help()  
+        if website == "-delete":
+                Delete()          
+   
 
         if website == "-exit":
                 sys.exit("Exited program")
