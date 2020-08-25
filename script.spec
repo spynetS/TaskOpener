@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['script.py'],
-             pathex=['C:\\Users\\Elev\\Desktop\\Projects\\TaskOpeningScript'],
+a = Analysis(['Script.py'],
+             pathex=['C:\\Users\\alfre\\OneDrive\\Skrivbord\\Projects\\TaskOpener\\TaskOpener'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -21,7 +21,7 @@ exe = EXE(pyz,
           a.scripts,
           [],
           exclude_binaries=True,
-          name='script',
+          name='Script',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
@@ -34,4 +34,4 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                upx_exclude=[],
-               name='script')
+               name='Script')
