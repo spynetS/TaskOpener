@@ -4,3 +4,4 @@ one,https://mail.one.com/alfred@stensatter.se/INBOX/1/
 yt,https://www.youtube.com/
 g,www.google.com
 sten,www.stensatter.se
+gh,www.github.com

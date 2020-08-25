@@ -16,7 +16,6 @@ def NewSite():
         
         if newsite == "-cancel":
                 Loop()
-
         if newsite == "-help":
               Help()
         if newsite == "-exit":
