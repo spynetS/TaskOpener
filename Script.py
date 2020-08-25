@@ -11,7 +11,7 @@ def Show():
 def NewSite():
         print("Write new url and shortcut")
         print("ex,www.example.com")
-        newsite=raw_input()
+        newsite=input()
         
         if newsite == "CANCEL":
                 Loop()
@@ -29,7 +29,7 @@ def Loop():
         print("MAIN")
         print("Type HELP for help")
         lines = open(path,"r")
-        website = raw_input()
+        website = input()
         
         if website == "NEW":
         	NewSite()
