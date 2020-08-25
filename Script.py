@@ -1,6 +1,12 @@
 import webbrowser, sys
-path= "C:/Users/Elev/Desktop/Projects/TaskOpeningScript/urls.txt"
+path= "urls.txt"
 run = True
+
+def Show():
+        file = open(path,"r")
+        for line in file:
+                print(line)
+        Loop()
 
 def NewSite():
         print("Write new url and shortcut")
@@ -37,11 +43,15 @@ def Loop():
 
         if website == "EXIT":
                 sys.exit("Exited program")
+        if website == "SHOW":
+                Show()
+
         for line in lines:
         	splittedline = line.split(',')[0]
         	if splittedline==website: 
         		webbrowser.open(line.split(',')[1])
-        		
+
+        	
         lines.close()
         Loop()
 
