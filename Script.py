@@ -26,6 +26,7 @@ for line in lines:
 	
 	if splittedline==website: 
 		webbrowser.open(line.split(',')[1])
+	if 
 lines.close()
 
 input()
